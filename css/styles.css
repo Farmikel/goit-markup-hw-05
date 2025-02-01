@@ -449,6 +449,11 @@ main {
   background-color: #31d0aa;
 }
 
+.footer-form {
+  display: flex;
+  gap: 24px;
+}
+
 .footer-label {
   display: block;
 }
@@ -458,15 +463,18 @@ main {
 }
 
 .footer-input-email {
-  padding: 8px 16px;
+  padding-left: 16px;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
-  min-width: 264px;
-  background-color: transparent;
+  width: 264px;
   height: 40px;
-  margin-right: 24px;
+  background-color: transparent;
   outline: transparent;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
 }
 
 .footer-input-email::placeholder {
@@ -484,9 +492,9 @@ main {
   line-height: 1.5;
   letter-spacing: 0.04em;
   min-width: 165px;
+  height: 40px;
   border: none;
   border-radius: 4px;
-  height: 40px;
   background-color: #4D5AE5;
   color: #FFFFFF;
   display: flex;
@@ -515,7 +523,8 @@ main {
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
+  pointer-events: none; 
+  transition:  250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-open {
@@ -526,7 +535,7 @@ main {
 
 .modal {
   background-color: #FCFCFC;
-  max-width: 408px;
+  width: 408px;
   min-height: 584px;
   border-radius: 4px;
   position: absolute;
@@ -534,6 +543,8 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 72px 24px 24px 24px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-button {
@@ -544,14 +555,16 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #E7E9FC;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: absolute;
+  padding: 0;
   top: 24px;
   right: 24px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close-button:hover {
+.modal-close-button:hover,
+.modal-close-button:focus {
   background-color: #404BBF;
   border: none;
 }
@@ -561,13 +574,14 @@ main {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close-button:hover > .close-icon {
+.modal-close-button:hover .close-icon,
+.modal-close-button:focus .close-icon {
   fill: #FFFFFF;
 }
 
 .modal-field {
   margin-bottom: 8px;
-  height: 58px;
+  /* height: 58px; */
 }
 
 .modal-title {
@@ -602,9 +616,11 @@ main {
 .modal-label {
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.16;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8E8F99;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .modal-input-wrapper {
@@ -622,12 +638,16 @@ main {
 
 .modal-field-textarea {
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .modal-textarea {
 width: 100%;
 height: 120px;
+font-size: 12px;
+line-height: 1.17;
+letter-spacing: 0.04em;
+color: rgba(46, 47, 66, 0.4);
 border: 1px solid rgba(46, 47, 66, 0.4);
 border-radius: 4px;
 background-color: transparent;
@@ -641,16 +661,21 @@ resize: none;
   border-color: #4D5AE5;
 }
 
+.modal-aggrement {
+  margin-bottom: 24px;
+}
+
 .modal-check-item {
   width: 16px;
   height: 16px;
   border-radius: 2px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   margin-right: 8px;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: transparent;
 }
 
 .check-icon {
@@ -660,7 +685,7 @@ resize: none;
 
 .modal-check:checked + .modal-check-text .modal-check-item { 
   background-color: #404BBF;
-  border-color: #404BBF;
+  border: none;
 }
 
 .modal-check:checked+.modal-check-text .check-icon {
@@ -670,7 +695,7 @@ resize: none;
 .modal-check-text {
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.16;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8E8F99;
   display: flex;
@@ -680,23 +705,23 @@ resize: none;
 .modal-check-link {
   color: #4D5AE5;
   text-decoration: underline;
+  margin-left: 3px;
 }
 
 .modal-button {
   background-color: #4D5AE5;
-  color: white;
+  color: #FFFFFF;
   border: none;
   letter-spacing: 0.04em;
   line-height: 1.5;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   border-radius: 4px;
   display: block;
   margin: 0 auto;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 24px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
